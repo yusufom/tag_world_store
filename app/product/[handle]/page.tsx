@@ -6,7 +6,8 @@ import Footer from 'components/layout/footer';
 import { Gallery } from 'components/product/gallery';
 import { ProductDescription } from 'components/product/product-description';
 import { HIDDEN_PRODUCT_TAG } from 'lib/constants';
-import { getProduct, getProductRecommendations } from 'lib/shopify';
+import { homepageItems } from 'lib/data';
+// import { getProduct } from 'lib/shopify';
 import { Image } from 'lib/shopify/types';
 import Link from 'next/link';
 import { Suspense } from 'react';
@@ -16,7 +17,9 @@ export async function generateMetadata({
 }: {
   params: { handle: string };
 }): Promise<Metadata> {
-  const product = await getProduct(params.handle);
+  // const product = await getProduct(params.handle);
+  console.log(params);
+  const product = homepageItems[0];
 
   if (!product) return notFound();
 
@@ -50,7 +53,8 @@ export async function generateMetadata({
 }
 
 export default async function ProductPage({ params }: { params: { handle: string } }) {
-  const product = await getProduct(params.handle);
+  console.log(params);
+  const product = homepageItems[0];
 
   if (!product) return notFound();
 
@@ -108,7 +112,8 @@ export default async function ProductPage({ params }: { params: { handle: string
 }
 
 async function RelatedProducts({ id }: { id: string }) {
-  const relatedProducts = await getProductRecommendations(id);
+  console.log(id);
+  const relatedProducts = homepageItems;
 
   if (!relatedProducts.length) return null;
 

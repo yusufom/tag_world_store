@@ -1,10 +1,11 @@
-import { getCollectionProducts } from 'lib/shopify';
+// import { getCollectionProducts } from 'lib/shopify';
+import { homepageItems } from 'lib/data';
 import Link from 'next/link';
 import { GridTileImage } from './grid/tile';
 
-export async function Carousel() {
+export async function Carousel({ title }: any) {
   // Collections that start with `hidden-*` are hidden from the search page.
-  const products = await getCollectionProducts({ collection: 'hidden-homepage-carousel' });
+  const products = homepageItems;
 
   if (!products?.length) return null;
 
@@ -13,6 +14,7 @@ export async function Carousel() {
 
   return (
     <div className=" w-full overflow-x-auto pb-6 pt-1">
+      <h2 className="my-4 text-center text-4xl font-bold">{title}</h2>
       <ul className="flex animate-carousel gap-4">
         {carouselProducts.map((product, i) => (
           <li

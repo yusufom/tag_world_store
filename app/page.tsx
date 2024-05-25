@@ -13,7 +13,7 @@ export default async function HomePage() {
   return (
     <>
       <ThreeItemGrid />
-      <Carousel />
+      <Carousel title="Trending" />
       <Footer />
     </>
   );
