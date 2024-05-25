@@ -13,7 +13,12 @@ export default async function HomePage() {
   return (
     <>
       <ThreeItemGrid />
-      <Carousel title="Trending" />
+      <div className="space-y-10">
+        <Carousel title="Trending" />
+        <Carousel title="New Arrivals" />
+        <Carousel title="Discount Sales" />
+        <Carousel title="Category" />
+      </div>
       <Footer />
     </>
   );
